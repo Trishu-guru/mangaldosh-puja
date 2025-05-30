@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avantika Tirth Vedic Anushthan Kendra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Rajdhani:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Yatra One', cursive;
+      background: url('https://pngmagic.com/webp_images/light-yellow-background-hd-for-invitations_7kT.webp') no-repeat center center fixed;
+      background-size: cover;
+      color: #2e1a0f;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: slideDown 1.5s ease forwards;
+      opacity: 0;
+      transform: translateY(-60px);
+    }
+
+    header.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .header-section {
+      text-align: center;
+      flex: 1;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 1s ease;
+      animation-fill-mode: forwards;
+    }
+
+    .header-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Delay animations on header sections */
+    .header-section:nth-child(1).visible {
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.5s;
+    }
+    .header-section:nth-child(3).visible {
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.7s;
+    }
+
+    .header-section img {
+      width: 80px;
+      height: auto;
+      border-radius: 10px;
+      border: 3px solid #f97316;
+      transition: transform 0.4s ease;
+    }
+    .header-section img:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .header-section p {
+      margin: 0.5rem 0 0;
+      color: #facc15;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .title-area {
+      text-align: center;
+      font-family: 'Rajdhani', sans-serif;
+      opacity: 0;
+      animation: fadeInZoom 2s ease forwards;
+      animation-delay: 1s;
+      transform-origin: center center;
+      margin-bottom: 1rem;
+    }
+
+    .title-area h1 {
+      font-size: 2.7rem;
+      color: #7c2d12;
+      margin: 0;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px #b43a04;
+    }
+
+    .title-area p {
+      color: #b91c1c;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+      text-shadow: 1px 1px 3px #800000;
+    }
+
+    .title-area img {
+      width: 100px;
+      margin: 0.5rem 0;
+      border-radius: 10px;
+      border: 3px solid #f97316;
+      transition: transform 0.4s ease;
+    }
+    .title-area img:hover {
+      transform: scale(1.15) rotate(-5deg);
+    }
+
+    section {
+      padding: 2rem;
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      transition: all 0.8s ease;
+      border-radius: 15px;
+      background: rgba(255 255 255 / 0.7);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      margin: 1rem auto;
+      max-width: 900px;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    h2 {
+      color: #fb923c;
+      margin-bottom: 1rem;
+      font-family: 'Rajdhani', sans-serif;
+      text-shadow: 1px 1px 1px #a34700;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .services > div {
+      flex: 1;
+    }
+
+    .services > div:nth-child(2) {
+      text-align: center;
+    }
+
+    .services li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.6rem;
+      transition: transform 0.3s ease;
+      font-weight: 600;
+      color: #9c4221;
+      cursor: default;
+      position: relative;
+    }
+
+    .services li:hover {
+      transform: translateX(10px);
+      color: #fb923c;
+    }
+
+    .services li::before {
+      content: "🔱";
+      margin-right: 10px;
+      animation: pulse 2s infinite;
+      display: inline-block;
+    }
+
+    .footer {
+      background-color: #111;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.875rem;
+      color: #aaa;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.7);
+    }
+
+    .contact p, .social-media a {
+      margin: 0.3rem 0;
+    }
+
+    .social-media {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .social-media a {
+      display: inline-block;
+      margin: 0 1rem;
+      color: #b91c1c;
+      font-size: 1.6rem;
+      text-decoration: none;
+      transition: transform 0.5s ease;
+      filter: drop-shadow(0 0 2px #800000);
+    }
+
+    .social-media a:hover {
+      color: #fb923c;
+      transform: scale(1.3) rotate(10deg);
+      filter: drop-shadow(0 0 5px #fb923c);
+    }
+
+    .gallery {
+      text-align: center;
+    }
+
+    .gallery img {
+      width: 200px;
+      margin: 10px;
+      border-radius: 15px;
+      transition: transform 0.5s ease, filter 0.5s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      filter: drop-shadow(0 0 1px #b86b18);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.15) rotate(3deg);
+      filter: drop-shadow(0 0 8px #fb923c);
+      z-index: 10;
+      position: relative;
+    }
+
+    .button-icon {
+      width: 50px;
+      height: auto;
+      border-radius: 12px;
+      margin: 0 10px;
+      transition: transform 0.5s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      filter: drop-shadow(0 0 2px #7f1d1d);
+    }
+
+    .button-icon:hover {
+      transform: scale(1.3) rotate(15deg);
+      box-shadow: 0 4px 12px rgba(251, 146, 60, 0.9);
+      filter: drop-shadow(0 0 6px #fb923c);
+    }
+
+    /* Keyframes */
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInZoom {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.3);
+        opacity: 0.7;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .title-area h1 {
+        font-size: 1.7rem;
+      }
+      .social-media a {
+        display: block;
+        margin: 0.5rem auto;
+      }
+      section {
+        padding: 1rem;
+        margin: 1rem;
+      }
+      .services {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-section">
+      <img
+        src="https://reservation.shreeganga.in/wp-content/uploads/2023/01/chintaman-ganesh-temple-ujjain.jpg"
+        alt="Ganesh Temple"
+      />
+      <p>|| श्री गणेशाय नमः ||</p>
+    </div>
+    <div class="title-area">
+      <p>|| जय श्री महाकाल ||</p>
+      <img
+        src="https://pbs.twimg.com/media/E6LMNPHVIAYPSCa.jpg:large"
+        alt="Mahakal Temple"
+      />
+      <h1>अवंतिका तीर्थ वैदिक अनुष्ठान केंद्र</h1>
+    </div>
+    <div class="header-section">
+      <img
+        src="https://media-cdn.tripadvisor.com/media/photo-p/19/c6/33/80/harsidhi-maa-ujjain.jpg"
+        alt="Harsiddhi Temple"
+      />
+      <p>|| जय माँ हरसिद्धि ||</p>
+    </div>
+  </header>
+
+  <section class="about">
+    <h2>हमारे द्वारा</h2>
+    <p>
+      मंगलभात पुजा, मंगलदोष पुजा, कालसर्प दोष,महामृत्युंजय जाप,रुद्राअभिषेक,
+      नवचंडी अनुष्ठान ,नवग्रह शांति,  पितृ दोष आदि का समाधान किया जाता है।
+    </p>
+  </section>
+
+  <section class="services">
+    <div>
+      <h2>सेवाएं</h2>
+      <ul>
+        <li>मंगल दोष पुजा </li>
+        <li>कालसर्प दोष पूजा</li>
+        <li>पितृ दोष शांति</li>
+        <li>महामृत्युंजय जाप एवं रुद्राभिषेक</li>
+        <li>शुभ विवाह </li>
+        <li>जन्म पत्रिका देखि व बनाई जाती है </li>
+      </ul>
+    </div>
+    <div>
+      <img
+        src="https://images.tv9hindi.com/wp-content/uploads/2023/07/ujjain-angareshwar-mahadev-temple-latest-news.jpeg"
+        alt="Angareshwar Mahadev Temple"
+        style="max-width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
+      />
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>पं. दीपक शर्मा</h2>
+    <p>संपर्क सूत्र</p>
+    <p>
+      📞 <a href="tel:+917000040335">7000040335</a> //
+      <a href="tel:+919977969743">9977969743</a>
+    </p>
+    <p>📧 ds.deepaksharma2301@gmail.com</p>
+    <p>स्थान: उज्जैन (म.प्र)</p>
+  </section>
+
+  <section class="social-media">
+    <h2>हमसे जुड़ें</h2>
+    <a
+      href="https://www.youtube.com/@P.deepaksharma9977"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="YouTube"
+    >
+      <img
+        src="https://1000logos.net/wp-content/uploads/2017/02/YouTube-Logosu.png"
+        alt="YouTube"
+        class="button-icon"
+      />
+    </a>
+    <a
+      href="https://www.instagram.com/deepaksharma230188/"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Instagram"
+    >
+      <img
+        src="https://1000logos.net/wp-content/uploads/2017/02/Instagram-app-logo.jpg"
+        alt="Instagram"
+        class="button-icon"
+      />
+    </a>
+    <a
+      href="https://wa.me/919977969743"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="WhatsApp"
+    >
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+        alt="WhatsApp"
+        class="button-icon"
+        style="background: #25D366; padding: 5px; border-radius: 10px"
+      />
+    </a>
+  </section>
+
+  <div class="footer">
+    © 2025 Avantika Tirth Vedic Anushthan Kendra. सर्वाधिकार सुरक्षित।
+  </div>
+
+  <script>
+    // Scroll-based animation using IntersectionObserver
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // एक बार दिखने के बाद observer हटाएं
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    document.querySelectorAll('section, .header-section, header, .title-area').forEach((el) => {
+      observer.observe(el);
+    });
+
+    console.log('Avantika Tirth Vedic Anushthan Kendra website loaded with animations.');
+  </script>
+</body>
+</html>
